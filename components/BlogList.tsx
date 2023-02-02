@@ -11,7 +11,7 @@ function BlogList({posts} : Props) {
         <hr className="border-[#0fbcf9]"/>
 
         <div>
-            {posts.map(post =>(
+            {posts? posts.map(post =>(
                 <div key={post._id}>
                     <div className="relative w-full h-80 drop-shadow-xl group-hover:scale-105 transition-transform duration-200 ease-out">
                         <Image className = "object-cover object-left lg-object-center"
@@ -23,7 +23,7 @@ function BlogList({posts} : Props) {
 
 
                 </div>
-            ))}
+            )):"Nothing Found"}
         </div>
     </div>
   )
