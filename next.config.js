@@ -6,6 +6,6 @@ module.exports = {
     appDir : true
   },
   images:{
-    domains: ["drive.google.com"]
+    domains: ["drive.google.com","cdn.sanity.io"]
   }
 }
