@@ -1,6 +1,9 @@
 import { previewData } from "next/headers"
 import {groq} from "next-sanity";
 import { client } from "../../lib/sanity.client";
+import PreviewSuspense from "../../components/PreviewSuspense";
+import PreviewBlogList from "../../components/PreviewBlogList";
+import BlogList from "../../components/BlogList";
 
 const query = groq`
 //get me all the available posts
@@ -20,14 +23,21 @@ const query = groq`
 
 export default function HomePage(){
     if(previewData()){
-        return <div>Preview Mode</div>
+        return <PreviewSuspense
+        fallback={
+            <div className="status">
+                <p className="text-center text-lg animate-pulse text-[#0fbcf9]">
+                    Loading Preview Data ...
+                </p>
+            </div>
+        }>
+            <PreviewBlogList query={query} />
+        </PreviewSuspense>
     }
 
     const posts = client.fetch(query);
     console.log(posts);
     return (
-        <div>
-            <h1>Not in Preview Mode</h1>
-        </div>
+   <BlogList posts = {posts} />
     )
 }
