@@ -1,0 +1,133 @@
+Next JS is a React JS framework
+
+1//Creation : 
+=> npx create-next-app -e with-tailwindcss yourAppName
+
+here we imported a template from tailwind too
+
+2//Running server : 
+=> npm run dev
+
+Now your app must be running on : "http://localhost:3000/"
+
+3// you can delete the default welcome page on the pages folder and create a new folde called app on the app's root, the extensions there will be .tsx 
+
+
+4// Now you will need to enable the experimental feature as recommended by adding an element to an object on next.config.js likethis : 
+=> module.exports = {
+  reactStrictMode: true,
+  //this allows us to use a new app directory wallet
+  experimental : {
+    appDir : true
+  },
+}
+
+4// restart the server using the npm run dev again 
+you will find 2 new files added in ur app file "head" and "layout"
+to start using tailwind styles just go to ur layout file and import the styles like so : 
+>> import "../styles/globals.css";
+
+5// now for our Backend we will use Sanity it's content management remore tool
+install it first using a coupon or without 
+>> npm create sanity@latest -- --coupon sonny2022
+login and answer the questions and let the installation finish
+
+6// Now to connect our Backend (Sanity) with our Frontend (React/Next JS) 
+we will need to install a new dependency in our project
+>> npm install next-sanity @portabletext/react @sanity/image-url
+
+7// Now if u check ur folders u will find an additional Sanity folder with the name u have choosen but it has also a node_modules folder and 
+package.json so what we will do is pickup the additional dependencies from the new package.json file and add it manually to the main package.json file in our project (carefully)
+Now run yarn or npm install in my case to insall all of those dependencies in our project
+now to merge the backend and front end folders together smoothly 
+just grape the important files from the sanity folder and drag them up to the top level of our project :
+"schemas" - "sanity.cli.ts" - "sanity.config.ts"
+
+now u can delete that sanity folder after u dragged those
+
+8// Now after all things are setted up u will need to create an .env file on the very top level also ,
+it will has only 3 lines : 
+>> NEXT_PUBLIC_SANITY_PROJECT_ID = y3h7iy2t
+NEXT_PUBLIC_SANITY_DATASET = production
+NEXT_PUBLIC_SANITY_API_VERSION = 2022-11-15
+
+⚠ you will find ur project id in "sanity.config.ts"
+
+now in the sanity.config.ts, import ur environement variables like so : 
+>> const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
+and set up ur projects name and title just as u like : 
+>>
+export default defineConfig({
+
+  basePath: "/studio",
+  name: 'Oussama_Blog_Studio',
+  title: 'Oussama Blog Studio',
+
+  projectId: 'y3h7iy2t',
+  dataset: 'production',
+
+  plugins: [deskTool(), visionTool()],
+
+  schema: {
+    types: schemaTypes,
+  },
+})
+
+⚠ on Plugins the visionTool() allows us to test our crock queries on the backend
+⚠crock is a querying language i will be using to query the database of sanity
+
+Now we will need to embed the sanity studio on the backend.
+✳Btw you could find the help documentation here : "https://www.npmjs.com/package/next-sanity#next-sanitystudio"
+
+
+9// Now inside our "app" folder we will need to make a folder called "studio" and inside the studio folder we will have to create a [...index] folder
+following to the documentation : 
+it should be like so : app/studio/[...index]
+now create a file called "page" with the tsx extension => app/studio/[...index]/page.tsx
+next configure ur studio like so : 
+>> 'use client'
+import {NextStudio} from 'next-sanity/studio';
+import config from '../../sanity.config';
+
+export default function StudioPage(){
+    return <NextStudio config={config} />
+}
+
+and also create a head.tsx : app/studio/[...index]/head.tsx
+>> 
+// Re-export `NextStudioHead` as default if you're happy with the default behavior
+export {NextStudioHead as default} from 'next-sanity/studio/head'
+
+import {NextStudioHead} from 'next-sanity/studio/head'
+
+export default function CustomStudioHead() {
+  return (
+    <>
+      <NextStudioHead favicons={false} />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="https://www.sanity.io/static/images/favicons/favicon-32x32.png"
+      />
+    </>
+  )
+}
+
+10// Now add a loading indecator : app/studio/[...index]/loading.tsx
+
+>> 'use client'
+
+import config from '../../../sanity.config'
+import {NextStudioLoading} from 'next-sanity/studio/loading'
+
+export default function Loading() {
+  return <NextStudioLoading config={config} />
+}
+
+11// Now we are in a position where we could try our Sanity Backend Studio
+just go to : http://localhost:3000/studio/
+login and make some posts
+
+
