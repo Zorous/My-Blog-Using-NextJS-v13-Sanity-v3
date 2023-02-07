@@ -21,7 +21,7 @@ const query = groq`
 `
 
 
-export default function HomePage(){
+export default async function HomePage(){
     if(previewData()){
         return <PreviewSuspense
         fallback={
@@ -35,7 +35,7 @@ export default function HomePage(){
         </PreviewSuspense>
     }
 
-    const posts = client.fetch(query);
+    const posts = await client.fetch(query);
     console.log(posts);
     return (
    <BlogList posts = {posts} />
