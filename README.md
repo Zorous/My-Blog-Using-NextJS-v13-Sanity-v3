@@ -1,6 +1,9 @@
 The Composable Content Cloud
 Build remarkable experiences at scale. Sanity is a customizable solution that treats content as data to power your digital business.
 
+<b>Really real-time collaboration</b>
+Real-time collaboration, live multi-user editing, track changes. With Sanity you’re never blocked and never locked out. Work together like never before.
+
 # Next.js + Tailwind CSS Example
 
 This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.2)](https://tailwindcss.com/blog/tailwindcss-v3-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
