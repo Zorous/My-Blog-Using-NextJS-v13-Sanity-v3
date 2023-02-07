@@ -1,3 +1,4 @@
+<h1>What's Sanity : </h1>
 The Composable Content Cloud
 Build remarkable experiences at scale. Sanity is a customizable solution that treats content as data to power your digital business.
 
