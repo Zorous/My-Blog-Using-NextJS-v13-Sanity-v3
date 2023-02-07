@@ -4,7 +4,7 @@ import { client } from "../../../../lib/sanity.client";
 import urlFor from "../../../../lib/urlFor";
 import NotFoundImg from "../../../../assets/notfound.png";
 
-import {RichTextComponent} from "../../../components/RichTextComponent";
+// import {RichTextComponent} from "../../../../components/RichTextComponent";
 
 import { PortableText } from "@portabletext/react";
 
