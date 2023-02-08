@@ -3,16 +3,16 @@ import Image from "next/image";
 import { client } from "../../../../lib/sanity.client";
 import urlFor from "../../../../lib/urlFor";
 import NotFoundImg from "../../../../assets/notfound.png";
-
 import {RichTextComponent} from "../../../../components/RichTextComponent";
-
 import { PortableText } from "@portabletext/react";
+
 
 type Props = {
   params: {
     slug: string;
   };
 };
+
 async function Post({ params: { slug } }: Props) {
   const query = groq`
 *[_type == "post" && slug.current == $slug][0]{
