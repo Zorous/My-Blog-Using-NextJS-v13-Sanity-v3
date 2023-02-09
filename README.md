@@ -1,5 +1,6 @@
 ![Capture](https://user-images.githubusercontent.com/91610919/217957136-84f0637e-adf7-4d45-ac66-c14f1a15f1a0.PNG)
 
+<hr>
 
 <h1>What's Sanity : </h1>
 The Composable Content Cloud
@@ -9,7 +10,9 @@ Build remarkable experiences at scale. Sanity is a customizable solution that tr
 Real-time collaboration, live multi-user editing, track changes. With Sanity you’re never blocked and never locked out. Work together like never before.
 
 <i>It's really a game changing utility and it has so many useful plugins</i>
-
+<br>
+<hr>
+<br>
 # Next.js + Tailwind CSS Example
 
 This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.2)](https://tailwindcss.com/blog/tailwindcss-v3-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
