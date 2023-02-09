@@ -1,3 +1,6 @@
+![Capture](https://user-images.githubusercontent.com/91610919/217957136-84f0637e-adf7-4d45-ac66-c14f1a15f1a0.PNG)
+
+
 <h1>What's Sanity : </h1>
 The Composable Content Cloud
 Build remarkable experiences at scale. Sanity is a customizable solution that treats content as data to power your digital business.
